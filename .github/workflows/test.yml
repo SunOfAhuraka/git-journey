@@ -1,16 +1,17 @@
-name: Run Tests                 # workflow name
+name: My First Workflow
 
-on:                              # TRIGGER
+on:
   push:
     branches: [main]
 
 jobs:
-  test:                          # JOB name
-    runs-on: ubuntu-latest       # RUNNER
-    steps:                       # STEPS
-      - uses: actions/checkout@v4        # an ACTION: grab your code
-      - uses: actions/setup-node@v4      # an ACTION: install Node
-        with:
-          node-version: '20'
-      - run: npm install                 # a raw shell command
-      - run: npm test                    # a raw shell command
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a message
+        run: echo "Hello from GitHub Actions!"
+      - name: Print the date
+        run: date
+      - name: List files in this repo
+        uses: actions/checkout@v4
+      - run: ls -la
