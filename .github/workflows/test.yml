@@ -1,0 +1,16 @@
+name: Run Tests                 # workflow name
+
+on:                              # TRIGGER
+  push:
+    branches: [main]
+
+jobs:
+  test:                          # JOB name
+    runs-on: ubuntu-latest       # RUNNER
+    steps:                       # STEPS
+      - uses: actions/checkout@v4        # an ACTION: grab your code
+      - uses: actions/setup-node@v4      # an ACTION: install Node
+        with:
+          node-version: '20'
+      - run: npm install                 # a raw shell command
+      - run: npm test                    # a raw shell command
